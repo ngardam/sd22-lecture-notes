@@ -8,7 +8,7 @@ const rl = interface.createInterface(
 
 function ask(questionText) {
     return new Promise((resolve, reject) => {
-        readlineInterface.question(questionText, resolve)
+        readlineInterface.question( questionText, resolve)
     })
 }
 
@@ -21,3 +21,4 @@ console.log(answer.toUpperCase());
 console.log('Thank you for the feedback!');
 
 }
+

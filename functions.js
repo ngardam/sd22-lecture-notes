@@ -26,26 +26,25 @@
 */
 
 function fxDeclaration() {
-    return "This is a function declaration's return statement"
+  return "This is a function declaration's return statement";
 }
 
 let displayData = fxDeclaration();
 
 console.log(displayData);
 
-
 function greetUser(userName) {
-    return `Good day, ${userName}`
+  return `Good day, ${userName}`;
 }
 
 console.log(greetUser());
 
-console.log(greetUser('Nick'));
+console.log(greetUser("Nick"));
 
 // Functions can have zero or many parameters
 // Parameters act as doors to let arguments inside function.
 
-console.log(greetUser()) // returns undefined because parameter is given & default is undefined.
+console.log(greetUser()); // returns undefined because parameter is given & default is undefined.
 
 //passing variables as arguments:
 
@@ -53,18 +52,17 @@ let user1 = "Nick";
 
 console.log(greetUser(user1));
 
-
 //Function Expression
 
 /** Function expression utilizes a variable
  * as a placeholder
  */
 //  (!!!)
-let myDog = function(name, breed) {
-    return `My dog, ${name} is a ${breed}`
-}
+let myDog = function (name, breed) {
+  return `My dog, ${name} is a ${breed}`;
+};
 
-console.log(myDog("Bentley", "Old English Bulldog"))
+console.log(myDog("Bentley", "Old English Bulldog"));
 
 // * Arrow Functions
 
@@ -74,6 +72,10 @@ More concise way of writing functions.
 Arrow functions are created using function expressions ONLY
 They do not bind to .this or super
 */
+
+// ! making a bug here
+
+let brokenFunction = () => {
 
 // * Concise Body Arrow Function
 
@@ -85,17 +87,16 @@ let greetEveryone = () => console.log("Hello Class");
 
 greetEveryone();
 
-let greetPerson = name => console.log(`Hello, ${name}`)
+let greetPerson = (name) => console.log(`Hello, ${name}`);
 
 greetPerson("Nick");
 
 //* Block Body Arrow Function
 
 let sendEmail = (email, name) => {
+  let greet = "What's up, ";
 
-    let greet = "What's up, "
-
-    return `${greet}${name}:
+  return `${greet}${name}:
     
     We've been trying to reach you about your car's \n
     extended warranty. Oh my dog, not this crap again!
@@ -103,8 +104,8 @@ let sendEmail = (email, name) => {
     
     Sincerely, \n
     
-    ${name}`
-}
+    ${name}`;
+};
 
 console.log(sendEmail("test@gmail.com", "paul"));
 
@@ -119,20 +120,20 @@ console.log(sendEmail("test@gmail.com", "paul"));
 */
 
 let calculateTaxAndTip = (preTax, salesTaxPercentage, tipPercentage) => {
+  //let tipAmount = (tipPercentage / 100) * preTax;
 
-    //let tipAmount = (tipPercentage / 100) * preTax;
+  let tax = (salesTaxPercentage / 100) * preTax;
 
-    let tax = (salesTaxPercentage / 100) * preTax;
+  totalWithTax = preTax + tax;
 
-    totalWithTax = preTax + tax;
-    
-    let tipAmount = (tipPercentage / 100) * totalWithTax;
-    
-    return `\n Total bill with ${salesTaxPercentage}% sales tax added: $${totalWithTax.toFixed(2)} \n 
+  let tipAmount = (tipPercentage / 100) * totalWithTax;
+
+  return `\n Total bill with ${salesTaxPercentage}% sales tax added: $${totalWithTax.toFixed(
+    2
+  )} \n 
         ${tipPercentage}% tip: ${tipAmount.toFixed(2)}`;
+};
 
-}
-
-console.log(calculateTaxAndTip(20.00, 10, 15));
+console.log(calculateTaxAndTip(20.0, 10, 15));
 
 console.log(calculateTaxAndTip(20.34, 13, 12));
