@@ -137,3 +137,177 @@ captainAmerica.nameAndMovie();
 ironMan.whichTeam();
 
 captainAmerica.whichTeam();
+
+class Circle {
+
+    static createCircleFromDia(dia) {
+        return new Circle(dia/2);
+    }
+
+
+    constructor(radius){
+        if (typeof radius === "number"){
+            
+            this.radius = radius
+        } else {
+            throw "Your parameter needs to be a number"
+        }
+    }
+
+    circumference() {
+        return this.radius * 2 * Math.PI;
+    }
+
+    area() {
+        return this.radius**2 * Math.PI;
+    }
+}
+
+
+let smallCircle = new Circle(10);
+
+console.log(smallCircle.circumference());
+
+console.log(smallCircle.area());
+
+let wrongCircle = new Circle(12);
+
+
+class Pizza {
+    constructor(type){
+
+        if (type.toLowerCase() !== "pineapple"){
+            this.type = type;
+        } else {
+            throw "Pineapple is not an acceptable type of pizza."
+        }
+    }
+}
+
+let ham = new Pizza("Ham");
+
+console.log(ham)
+
+let pineapple = new Pizza("apple");
+
+console.log(pineapple)
+
+
+//Factory Functions
+
+// Meeting with Morgan here, may have missed some notes
+
+/*
+    Functions that accept data andd return new instance of a Class back to you.
+
+    Good for modifying the data coming in for instance.
+*/
+
+function circleFromDiameter(diameter) {
+    return new Circle(diameter / 2);
+}
+
+let circle10 = circleFromDiameter(10);
+
+console.log(circle10);
+
+let newCircle = circleFromDiameter(5);
+
+console.log(newCircle.circumference());
+
+// * some of this may be wrong
+
+let c = Circle.createCircleFromDia(25);
+
+console.log(c);
+
+// ! static factory methods vs normal factory methods, look this up, unclear, static func vs reg func
+
+
+
+
+// *Inheritence
+
+class Options extends Car {
+    constructor(
+        make,
+        model,
+        year,
+        transmission,
+        hasLeather,
+        hasComfortAccess,
+        hasSportPackage
+    ) {
+        super(make, model, year, transmission)
+        this.hasLeather = hasLeather
+        this.hasComfortAccess = hasComfortAccess
+        this.hasSportPackage = hasSportPackage
+    }
+
+    isCPO(currentYear) {
+        let result = currentYear - this.year
+        return result >= 6     //* Ternary conditional
+            ? `Your ${this.model} is out of warranty`
+            : "Your warranty is still active"
+    }
+}
+
+let porsche911 = new Options('Porsche', '911', 1912, 'PDK', true, true, false)
+
+console.log(porsche911.isCPO(1975));
+
+// Challenge
+
+/*
+    Extend the House class with one callse Sale.
+    Sale should have properties:
+        appraisalValue (int)
+        listPrice(int)
+        agent(str)
+        isListed(bool)
+
+    Create a method which calculates the difference between appraisalValue and the listPrice.
+
+    Add condition which checks if the diff is more than 20% and says "Too expensive" or something if false, say good deal
+    return should include the difference
+
+*/
+
+new House()
+
+class Sale extends House {
+    constructor(
+        address,
+        bedrooms,
+        bathrooms,
+        appraisalValue,
+        listPrice,
+        agent,
+        isListed
+    )
+    {
+        super(address, bedrooms, bathrooms);
+        this.appraisalValue = appraisalValue;
+        this.listPrice = listPrice;
+        this.agent = agent;
+        this.isListed = isListed;
+    }
+
+    isGoodDeal() {
+        if (this.appraisalValue * 1.2 >= this.listPrice){
+            console.log("Good Deal")
+        } else {
+            console.log("Bad Deal")
+        }
+
+        console.log(`Difference between appraisal and listing: ${this.listPrice - this.appraisalValue}` );
+    }
+}
+
+let forSaleHouse = new Sale('123 main', 2, 24, 100, 121, 'Sammies McGee', true);
+
+forSaleHouse.isGoodDeal();
+
+console.log(new Date);
+
+console.log(new Date);
