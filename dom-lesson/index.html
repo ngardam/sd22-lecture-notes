@@ -8,6 +8,30 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- script loaded at top renders at top, and trying to reload script does nothing -->
+    <!-- ! Don't Do This!! Script should only be called at the end of body -->
+    <!-- <script src="app.js"></script> -->
+
+    <div id="list">
+        <h1 id="listTitle">To Do List</h1>
+        <div id="toDoList">
+            <ul id="ulToDo">
+                <li class="listItem">Clean bathroom</li>
+                <li class="listItem">Pack clothes</li>
+                <li class="listItem">Pack bathroom</li>
+                <li class="listItem">Check if doors and windows closed</li>
+                <li class="listItem">Clean kitchen</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+<div id="inputField">
+    <input type="text" name="" id="listInput">
+    <button id="submit"></button>
+</div>
+
     <script>
         // ** Inline Scripting
         // function sayName(name) {
@@ -21,6 +45,19 @@
     </script>
 
     <!-- External File Scripts -->
-    <script src="app.js"></script>
+    <script src="app.js"></script> 
+
+
+    <!-- EVENT BUBBLING : When I click the paragraph, it triggers upward to INNER then OUTER-->
+<div onclick = "alert('outer div')">
+    OUTER DIV
+    <div onclick="alert('inner div')">
+        INNER DIV
+            <p onclick = "alert('photograph'); event.stopPropagation()">Paragraph</p>        
+    </div>
+</div>
+
+</div>
+
 </body>
 </html>
